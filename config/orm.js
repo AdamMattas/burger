@@ -1,5 +1,28 @@
-var connection = require('../config/connection.js');
+var connection = require('./connection.js');
 // var connection = require('connection.js');
+
+function printQuestionMarks(num) {
+  var arr = [];
+
+  for (var i = 0; i < num; i++) {
+    arr.push('?');
+  }
+
+  return arr.toString();
+}
+
+function objToSql(ob) {
+  // column1=value, column2=value2,...
+  var arr = [];
+
+  for (var key in ob) {
+    if (ob.hasOwnProperty(key)) {
+      arr.push(key + '=' + ob[key]);
+    }
+  }
+
+  return arr.toString();
+}
 
 var orm = {
   all: function (tableInput, cb) {
@@ -19,9 +42,11 @@ var orm = {
     queryString = queryString + ') ';
     queryString = queryString + 'VALUES (';
     queryString = queryString + printQuestionMarks(vals.length);
-    queryString = queryString + ') ';
+    queryString = queryString + ');';
 
     console.log(queryString);
+    console.log(cols.toString());
+    console.log(vals.toString());
 
     connection.query(queryString, vals, function (err, result) {
       if (err) throw err;
@@ -44,16 +69,16 @@ var orm = {
       cb(result);
     });
   },
-  // delete: function (table, condition, cb) {
-  //   var queryString = 'DELETE FROM ' + table;
-  //   queryString = queryString + ' WHERE ';
-  //   queryString = queryString + condition;
+  delete: function (table, condition, cb) {
+    var queryString = 'DELETE FROM ' + table;
+    queryString = queryString + ' WHERE ';
+    queryString = queryString + condition;
 
-  //   connection.query(queryString, function (err, result) {
-  //     if (err) throw err;
-  //     cb(result);
-  //   });
-  // }
+    connection.query(queryString, function (err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  }
 };
 
 module.exports = orm;
