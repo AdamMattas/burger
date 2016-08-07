@@ -64,6 +64,15 @@ h3 {
   height: 100px;
 }
 
+.chef{
+  background-image: url("../img/chef.png");
+  width: 84px;
+  height: 100px;
+  border: none;
+  position: absolute;
+  left: -85px;
+}
+
 .burger-top{
   background-image: url("../img/burger_top.png");
   width: 374px;
@@ -74,6 +83,7 @@ h3 {
   margin: 0 auto;
   left: 0;
   right: 0;
+  z-index: 101;
 }
 
 .burger-bottom{
@@ -86,4 +96,5 @@ h3 {
   margin: 0 auto;
   left: 0;
   right: 0;
+  z-index: 100;
 }
