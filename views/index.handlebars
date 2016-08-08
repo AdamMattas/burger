@@ -1,25 +1,35 @@
+<!-- begin page wrapper -->
 <div class="page-wrap">
 
+  <!-- begin header -->
   <div class="header">
     <div class="title"></div>
     <div class="chef"></div>
-    <div class="head-wrap"></div>
   </div>
+  <!-- end header -->
 
+  <!-- burger images -->
   <div class="burger-top"></div>
   <div class="burger-bottom"></div>
 
+  <!-- begin content wrapper -->
   <div class="content-wrap">
 
+    <!-- begin order up wrapper -->
     <ul class="order-panel">
       <h1 class="panel-title">Order Up</h1>
+      <!-- loops through each burger -->
       {{#each burgers}}
+        <!-- checks if burger has been eaten yet -->
         {{#unless this.devoured}}
           <li class="names-devour">
+            <!-- runs if burger is NOT marked as eaten in DB -->
             {{this.burger_name}}
           </li>
           
           <li>  
+            <!-- updates DB as this burger has been eaten. Posts to burgers_controller.js -->
+            <!-- method override used to pass PUT as POST -->
             <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devoured" value="true">
               <button class="devour" type="submit">Devour!</button>
@@ -29,15 +39,21 @@
         {{/unless}}
       {{/each}}
     </ul>
+    <!-- end order up wrapper -->
 
+    <!-- begin burgers eaten wrapper -->
     <ul class="order-panel">
       <h1 class="panel-title">Burgers Eaten</h1>
+      <!-- loops through each burger -->
       {{#each burgers}}
+        <!-- checks if burger has been eaten yet -->
         {{#if this.devoured}} 
           <li class="eaten">
+            <!-- runs if burger is marked as eaten in DB -->
             {{this.burger_name}}  
           </li>
 
+          <!-- uncomment this form to reverse eaten status in DB -->
           <!-- <li>  
             <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
               <input type="hidden" name="devoured" value="false">
@@ -48,10 +64,14 @@
         {{/if}}
       {{/each}}
     </ul>
+    <!-- end burgers eaten wrapper -->
 
   </div>
+  <!-- end content wrapper -->
 
+  <!-- begin footer -->
   <div class="footer">
+    <!-- form for adding new burgers to DB. Posts to burgers_controller.js -->
     <form class="create-update-form add-form" action="burgers/create" method="POST">
 
       <div class="form-group">
@@ -61,5 +81,7 @@
 
     </form>
   </div>
+  <!-- end footer -->
 
 </div>
+<!-- end page wrapper

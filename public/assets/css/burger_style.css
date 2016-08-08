@@ -45,18 +45,9 @@ h3 {
 /*end global styling*/
 
 /*universal class for hiding an element*/
-.hide{
-  display: none;
-}
 
 .page-wrap{
   width: 100%;
-}
-
-.head-wrap{
-  width: 80%;
-  height: 150px;
-  margin: 0 auto;
 }
 
 .content-wrap{
@@ -126,7 +117,6 @@ h3 {
 
 .order-panel{
   max-width: 426px;
-  /*float: left;*/
   position: relative;
   z-index: 102;
 }
