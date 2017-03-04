@@ -134,6 +134,7 @@ h3 {
   background-color: #fe0303;
   border: 2px solid #000000;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .eaten{
@@ -146,6 +147,7 @@ h3 {
   background-color: #fdf400;
   border: 2px solid #000000;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .add-form{
