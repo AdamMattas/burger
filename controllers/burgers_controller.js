@@ -24,9 +24,13 @@ router.get('/burgers', function (req, res) {
 // passes the burger name from the index.handlebars form and passes the db column name
 // redirects to .get /burgers and reloads page
 router.post('/burgers/create', function (req, res) {
-  burger.create(['burger_name'], [req.body.burger_name], function () {
-    res.redirect('/burgers');
-  });
+  if(!req.body.burger_name === '') {
+    burger.create(['burger_name'], [req.body.burger_name], function () {
+      res.redirect('/burgers');
+    });
+  } else {
+    res.redirect('/burgers');  
+  }
 });
 
 // accesses the update function in burger.js
